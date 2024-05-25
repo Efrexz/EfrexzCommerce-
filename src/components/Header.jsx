@@ -7,12 +7,12 @@ import CartShop from '../assets/cartShop.svg?react';
 
 function Header() {
     return (
-        <header className="bg-gray-100 p-4">
+        <header className="bg-gray-100 p-4 border-b border-gray-400 absolute w-full">
             <nav className='flex justify-between items-center px-6'>
-                <div className='flex items-center gap-6 w-[45%]'>
+                <div className='flex items-center gap-6 w-[50%]'>
                     <Logo />
                     <SearchValue />
-                    <ul className="flex items-center gap-4">
+                    <ul className="flex items-center gap-4 font-medium">
                         <li>
                             <a href="#">Home</a>
                         </li>

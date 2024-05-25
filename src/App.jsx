@@ -1,15 +1,20 @@
 import { Header } from './components/Header'
 import { HeroSection } from './components/HeroSection'
 import { Footer } from './components/Footer'
+import { GlobalProvider } from './context/GlobalContext'
 
 function App() {
 
 
   return (
     <>
-      <Header />
-      <HeroSection />
-      <Footer />
+      <main className='relative'>
+        <GlobalProvider>
+          <Header />
+          <HeroSection />
+          <Footer />
+        </GlobalProvider>
+      </main>
     </>
   )
 }
