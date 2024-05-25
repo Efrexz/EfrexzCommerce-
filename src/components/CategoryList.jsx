@@ -3,13 +3,13 @@ import { GlobalContext } from "../context/GlobalContext";
 
 function CategoryList() {
 
-    const { categoriesNamesUpperCase } = useContext(GlobalContext);
+    const { categoriesWithIcons } = useContext(GlobalContext);
     return (
         <fieldset>
             <legend className="text-lg font-bold text-gray-900">Categorías</legend>
 
             <div className="mt-4 space-y-3.5">
-                {categoriesNamesUpperCase.map((category) => (
+                {categoriesWithIcons.map((category) => (
                     <label key={category} className="flex cursor-pointer items-start gap-4">
                         <div className="flex items-center">
                             &#8203;

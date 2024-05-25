@@ -21,11 +21,28 @@ function GlobalProvider({ children }) {
             });
     }, []);
 
+
+    const categoryIcons = {
+        "Beauty": " 💄",
+        "Fragrances": " 🌸",
+        "Furniture": " 🛋️",
+        "Groceries": " 🛍️",
+        "Home decoration": " 🖼️",
+        "Kitchen accessories": " 🍳",
+        "Laptops": " 💻",
+        "Mens shirts": " 👔",
+        "Mens shoes": " 👞",
+        "Mens watches": " ⌚",
+        "Mobile accessories": " 📱"
+    };
     // Elimina categorias repetidas y eliminando espacios en blanco en las categorias
     const categoriesNames = [...new Set(data.map((product) => product.category.replace("-", ' ')))];
     // Transforma las categorias en mayúsculas solo la primera letra
     const categoriesNamesUpperCase = categoriesNames.map((category) => category.charAt(0).toUpperCase() + category.slice(1));
-    console.log(data);
+    console.log(categoriesNamesUpperCase);
+
+    // Agrega iconos a las categorias. Recorremos el array de categorias y si la categoria tiene un icono, agregamos el icono a la categoría si no solo devolvemos la categoría 
+    const categoriesWithIcons = categoriesNamesUpperCase.map((category) => (categoryIcons[category] ? category + categoryIcons[category] : category));
 
 
     return (
@@ -33,7 +50,7 @@ function GlobalProvider({ children }) {
             value={{
                 data,
                 loading,
-                categoriesNamesUpperCase,
+                categoriesWithIcons,
             }}
         >
             {children}
