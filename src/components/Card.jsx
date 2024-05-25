@@ -1,6 +1,7 @@
 import Heart from '../assets/heart.svg?react';
+import PropTypes from 'prop-types';
 
-function Card({ product }) {
+function Card({ productInfo }) {
     return (
         <div className="w-58 h-auto bg-white cursor-pointer p-3 border max-w-52 rounded-lg shadow-md">
             <figure className="relative w-full h-44 bg-cover bg-center bg-gray-100">
@@ -9,13 +10,17 @@ function Card({ product }) {
                     className="w-full h-full object-contain rounded-lg" src="/productItem.png" alt="product"
                 />
             </figure>
-            <h2 className="font-bold mt-2">Zapatos arrechisimos Vergatario</h2>
+            <h2 className="font-bold mt-2">{productInfo.name}</h2>
             <div className="flex justify-between items-center">
-                <span className="text-blue-600 font-bold text-xl">$4.99</span>
-                <span className="">4.8⭐</span>
+                <span className="text-blue-600 font-bold text-xl">${productInfo.price}</span>
+                <span className="">{productInfo.rating}⭐</span>
             </div>
         </div>
     );
+}
+
+Card.propTypes = {
+    productInfo: PropTypes.object.isRequired
 }
 
 export { Card };

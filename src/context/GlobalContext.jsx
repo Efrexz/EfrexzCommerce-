@@ -27,7 +27,6 @@ function GlobalProvider({ children }) {
     const categoriesNames = [...new Set(data.map((product) => product.category.replace("-", ' ')))];
     // Transforma las categorias en mayúsculas solo la primera letra
     const categoriesNamesUpperCase = categoriesNames.map((category) => category.charAt(0).toUpperCase() + category.slice(1));
-    console.log(categoriesNamesUpperCase);
 
     const categoryIcons = {
         "Beauty": "💄",
