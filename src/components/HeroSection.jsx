@@ -28,7 +28,7 @@ function HeroSection() {
                     <div className="flex flex-wrap justify-center gap-4">
                         {data.map((product) => (
                             <div key={product.id}>
-                                <Card productInfo={prueba} />
+                                <Card productInfo={product} />
                             </div>
                         ))}
                     </div>
