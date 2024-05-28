@@ -6,15 +6,10 @@ import { GlobalContext } from '../context/GlobalContext'
 
 function HeroSection() {
 
-    const { data } = useContext(GlobalContext);
-    console.log(data)
+    //traemos del contexto los productos que se han filtrado por busqueda
+    const { searchedProducts } = useContext(GlobalContext)
+    console.log(searchedProducts);
 
-    const prueba = {
-        name: "Zapatos mollejuos 4K papa",
-        price: 100,
-        image: "/productItem.png",
-        rating: 4,
-    }
     return (
         <main className="flex h-screen w-full pt-[75px]">
             <section className="bg-gray-100 pl-6 w-[18%] h-full pt-9">
@@ -26,7 +21,7 @@ function HeroSection() {
                 </div>
                 <div className="flex-grow overflow-y-auto p-4">
                     <div className="flex flex-wrap justify-center gap-4">
-                        {data.map((product) => (
+                        {searchedProducts.map((product) => (
                             <div key={product.id}>
                                 <Card productInfo={product} />
                             </div>

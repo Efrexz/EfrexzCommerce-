@@ -45,6 +45,16 @@ function GlobalProvider({ children }) {
     // Agrega iconos a las categorias. Recorremos el array de categorias y si la categoria tiene un icono, agregamos el icono a la categoría si no solo devolvemos la categoría 
     const categoriesWithIcons = categoriesNamesUpperCase.map((category) => (categoryIcons[category] ? category + categoryIcons[category] : category));
 
+    //Filtrado de productos por busqueda
+    const [searchValue, setSearchValue] = useState("");
+
+    const searchedProducts = data.filter(
+        (productData) => {
+            const productTitle = productData.title.toLowerCase();
+            const searchText = searchValue.toLowerCase();
+            return productTitle.includes(searchText);
+        }
+    );
 
     return (
         <GlobalContext.Provider
@@ -52,6 +62,9 @@ function GlobalProvider({ children }) {
                 data,
                 loading,
                 categoriesWithIcons,
+                searchedProducts,
+                searchValue,
+                setSearchValue,
             }}
         >
             {children}
