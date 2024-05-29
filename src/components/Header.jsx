@@ -12,24 +12,6 @@ function Header() {
                 <div className='flex items-center gap-6 w-[50%]'>
                     <Logo />
                     <SearchValue />
-                    <ul className="flex items-center gap-4 font-medium">
-                        <li>
-                            <a href="#">Home</a>
-                        </li>
-                        <span>|</span>
-                        <li>
-                            <a href="#">About</a>
-                        </li>
-                        <span>|</span>
-                        <li>
-                            <a href="#">Gallery</a>
-                        </li>
-                        <span>|</span>
-                        <li>
-                            <a href="#">Contact</a>
-                        </li>
-                        <span>|</span>
-                    </ul>
                 </div>
 
                 <div className="flex items-center gap-4">
