@@ -42,19 +42,46 @@ function GlobalProvider({ children }) {
         "Mobile accessories": "📱"
     };
 
-    // Agrega iconos a las categorias. Recorremos el array de categorias y si la categoria tiene un icono, agregamos el icono a la categoría si no solo devolvemos la categoría 
+    // Agrega iconos a las categorias. Recorremos el array de categorias y si la categoria tiene un icono, agregamos el icono a la categoría si no solo devolvemos la categoría
     const categoriesWithIcons = categoriesNamesUpperCase.map((category) => (categoryIcons[category] ? category + categoryIcons[category] : category));
 
-    //Filtrado de productos por busqueda
-    const [searchValue, setSearchValue] = useState("");
 
-    const searchedProducts = data.filter(
+    /////////ordernar los productos por precio y rating//////////
+    //creamos un estado para poder enviar al SortMenu y este sea modificado de acuerdo al orden que el usuario elija
+    const [orderBy, setOrderBy] = useState(null);
+    // filtrar y ordenar los productos
+    const filterAndSortProducts = (products, orderBy) => {
+        let sortedProducts;
+
+        switch (orderBy) {
+            case 'popular':
+                sortedProducts = [...products].sort((a, b) => b.rating - a.rating);
+                break;
+            case 'price-asc':
+                sortedProducts = [...products].sort((a, b) => a.price - b.price);
+                break;
+            case 'price-desc':
+                sortedProducts = [...products].sort((a, b) => b.price - a.price);
+                break;
+            default:
+                sortedProducts = products;
+        }
+
+        return sortedProducts;
+    };
+
+    ////////////Filtrado de productos por busqueda////////////
+
+    const [searchValue, setSearchValue] = useState("");
+    //De acuerdo si el usuario ha ordenado los productos, filtramos los productos por busqueda de acuerdo a la ordenn que ya ha seleccionado el usuario y si no selecciono ningun orden nos devuelve el array de productos original para poder filtrar por busqueda
+    const searchedProducts = filterAndSortProducts(data, orderBy).filter(
         (productData) => {
             const productTitle = productData.title.toLowerCase();
             const searchText = searchValue.toLowerCase();
             return productTitle.includes(searchText);
         }
     );
+
 
     return (
         <GlobalContext.Provider
@@ -65,6 +92,8 @@ function GlobalProvider({ children }) {
                 searchedProducts,
                 searchValue,
                 setSearchValue,
+                orderBy,
+                setOrderBy,
             }}
         >
             {children}

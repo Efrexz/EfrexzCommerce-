@@ -7,7 +7,7 @@ import { GlobalContext } from '../context/GlobalContext'
 function HeroSection() {
 
     //traemos del contexto los productos que se han filtrado por busqueda
-    const { searchedProducts } = useContext(GlobalContext)
+    const { searchedProducts } = useContext(GlobalContext);
     console.log(searchedProducts);
 
     return (
@@ -21,11 +21,13 @@ function HeroSection() {
                 </div>
                 <div className="flex-grow overflow-y-auto p-4">
                     <div className="flex flex-wrap justify-center gap-4">
-                        {searchedProducts.map((product) => (
-                            <div key={product.id}>
-                                <Card productInfo={product} />
-                            </div>
-                        ))}
+                        {
+                            searchedProducts.map((product) => (
+                                <div key={product.id}>
+                                    <Card productInfo={product} />
+                                </div>
+                            ))
+                        }
                     </div>
                 </div>
             </section>
