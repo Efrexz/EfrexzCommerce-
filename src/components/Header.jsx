@@ -4,8 +4,12 @@ import BellIcon from '../assets/bellIcon.svg?react';
 import MessageIcon from '../assets/message.svg?react';
 import ShopStore from '../assets/shopStore.svg?react';
 import CartShop from '../assets/cartShop.svg?react';
+import { GlobalContext } from '../context/GlobalContext';
+import { useContext } from 'react';
 
 function Header() {
+    const { cartProducts } = useContext(GlobalContext);
+
     return (
         <header className="bg-gray-100 p-4 border-b border-gray-400 absolute w-full">
             <nav className='flex justify-between items-center px-6'>
@@ -25,8 +29,13 @@ function Header() {
                         <li>
                             <a href="#"><ShopStore className='w-7 h-7' /></a>
                         </li>
-                        <li>
-                            <a href="#"><CartShop className='w-7 h-7' /></a>
+                        <li className='relative'>
+                            <a href="#">
+                                <CartShop className='w-7 h-7' />
+                            </a>
+                            <span className='absolute top-0 right-0 bg-blue-600 text-white rounded-full p-1 text-xs transform translate-x-1/2 -translate-y-1/2'>
+                                {cartProducts.length}
+                            </span>
                         </li>
                         <span className='font-bold mx-3'>|</span>
                         <figure>

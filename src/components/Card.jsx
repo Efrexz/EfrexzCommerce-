@@ -1,11 +1,17 @@
-import Heart from '../assets/heart.svg?react';
+import { useContext } from 'react';
+import { GlobalContext } from '../context/GlobalContext';
+import { Heart } from './Heart';
 import PropTypes from 'prop-types';
 
 function Card({ productInfo }) {
+    const { addToCart } = useContext(GlobalContext);
     return (
         <div className="w-58 h-[262px] bg-white cursor-pointer p-3 border max-w-52 rounded-lg shadow-md flex flex-col justify-between">
             <figure className="relative w-full h-44 bg-cover bg-center bg-gray-100">
-                <span className="absolute top-0 right-0 bg-white/60 rounded-full px-1 py-0.5 m-2 text-sm"><Heart /></span>
+                <span
+                    className="absolute top-0 right-0 bg-white/60 rounded-full px-1 py-0.5 m-2 text-sm"
+                    onClick={() => addToCart(productInfo)}
+                ><Heart /></span>
                 <img
                     className="w-full h-full object-contain rounded-lg" src={productInfo.thumbnail} alt="product"
                 />

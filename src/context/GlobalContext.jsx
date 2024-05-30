@@ -83,10 +83,29 @@ function GlobalProvider({ children }) {
     );
 
 
+    /////////////Agregar productos al carrito de compras////////////
+
+    const [cartProducts, setCartProducts] = useState([]);
+    const addToCart = (product) => {
+        //rerificar si ya existe el producto en el carrito
+        const isAlreadyInCart = cartProducts.some((cartProduct) => cartProduct.id === product.id);
+        if (!isAlreadyInCart) {
+            const newCart = [...cartProducts, product];
+            setCartProducts(newCart);
+        } else {
+            //si ya existe el producto en el carrito, eliminarlo
+            removeFromCart(product);
+        }
+    }
+
+    const removeFromCart = (product) => {
+        const newCart = cartProducts.filter((cartProduct) => cartProduct.id !== product.id);
+        setCartProducts(newCart);
+    };
+
     return (
         <GlobalContext.Provider
             value={{
-                data,
                 loading,
                 categoriesWithIcons,
                 searchedProducts,
@@ -94,6 +113,8 @@ function GlobalProvider({ children }) {
                 setSearchValue,
                 orderBy,
                 setOrderBy,
+                cartProducts,
+                addToCart,
             }}
         >
             {children}
