@@ -1,8 +1,14 @@
+import PropTypes from 'prop-types';
+import { useContext } from 'react';
+import { GlobalContext } from '../../../context/GlobalContext';
 import './Heart.css';
 
-function Heart() {
+function Heart({ productInfo }) {
+    //aplicamos aqui el onclick del heart para agregar el producto al carrito porque si lo agregamos en el componente card falla la animacion del heart si hace click en el contenedor del heart
+    const { addToCart } = useContext(GlobalContext);
+
     return (
-        <div className="heart-container" title="Like">
+        <div className="heart-container" title="Favorite" onClick={() => addToCart(productInfo)}>
             <input type="checkbox" className="checkbox" id="Give-It-An-Id" />
             <div className="svg-container">
                 <svg viewBox="0 0 24 24" className="svg-outline" xmlns="http://www.w3.org/2000/svg">
@@ -24,6 +30,10 @@ function Heart() {
             </div>
         </div>
     )
+}
+
+Heart.propTypes = {
+    productInfo: PropTypes.object.isRequired
 }
 
 export { Heart };
