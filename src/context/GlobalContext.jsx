@@ -6,13 +6,18 @@ const GlobalContext = createContext();
 function GlobalProvider({ children }) {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [orderBy, setOrderBy] = useState(null);
+    const [searchValue, setSearchValue] = useState("");
+    const [selectedCategory, setSelectedCategory] = useState(null);
+    const [filteredProducts, setFilteredProducts] = useState([]);
+    const [cartProducts, setCartProducts] = useState([]);
 
-    // Llamado a la API
     useEffect(() => {
         fetch('https://dummyjson.com/products?limit=99')
             .then((response) => response.json())
             .then((data) => {
                 setData(data.products);
+                setFilteredProducts(data.products); // Inicialmente mostramos todos los productos
                 setLoading(false);
             })
             .catch((error) => {
@@ -21,11 +26,7 @@ function GlobalProvider({ children }) {
             });
     }, []);
 
-
-
-    // Elimina categorias repetidas y eliminando espacios en blanco en las categorias
     const categoriesNames = [...new Set(data.map((product) => product.category.replace("-", ' ')))];
-    // Transforma las categorias en mayúsculas solo la primera letra
     const categoriesNamesUpperCase = categoriesNames.map((category) => category.charAt(0).toUpperCase() + category.slice(1));
 
     const categoryIcons = {
@@ -42,14 +43,8 @@ function GlobalProvider({ children }) {
         "Mobile accessories": "📱"
     };
 
-    // Agrega iconos a las categorias. Recorremos el array de categorias y si la categoria tiene un icono, agregamos el icono a la categoría si no solo devolvemos la categoría
     const categoriesWithIcons = categoriesNamesUpperCase.map((category) => (categoryIcons[category] ? category + categoryIcons[category] : category));
 
-
-    /////////ordernar los productos por precio y rating//////////
-    //creamos un estado para poder enviar al SortMenu y este sea modificado de acuerdo al orden que el usuario elija
-    const [orderBy, setOrderBy] = useState(null);
-    // filtrar y ordenar los productos
     const filterAndSortProducts = (products, orderBy) => {
         let sortedProducts;
 
@@ -70,33 +65,29 @@ function GlobalProvider({ children }) {
         return sortedProducts;
     };
 
-    ////////////Filtrado de productos por busqueda////////////
+    useEffect(() => {
+        let updatedProducts = filterAndSortProducts(data, orderBy);
 
-    const [searchValue, setSearchValue] = useState("");
-    //De acuerdo si el usuario ha ordenado los productos, filtramos los productos por busqueda de acuerdo a la ordenn que ya ha seleccionado el usuario y si no selecciono ningun orden nos devuelve el array de productos original para poder filtrar por busqueda
-    const searchedProducts = filterAndSortProducts(data, orderBy).filter(
-        (productData) => {
-            const productTitle = productData.title.toLowerCase();
-            const searchText = searchValue.toLowerCase();
-            return productTitle.includes(searchText);
+        if (selectedCategory) {
+            updatedProducts = updatedProducts.filter(product => product.category === selectedCategory);
         }
-    );
 
+        if (searchValue) {
+            updatedProducts = updatedProducts.filter(product => product.title.toLowerCase().includes(searchValue.toLowerCase()));
+        }
 
-    /////////////Agregar productos al carrito de compras////////////
+        setFilteredProducts(updatedProducts);
+    }, [data, selectedCategory, searchValue, orderBy]);
 
-    const [cartProducts, setCartProducts] = useState([]);
     const addToCart = (product) => {
-        //rerificar si ya existe el producto en el carrito
         const isAlreadyInCart = cartProducts.some((cartProduct) => cartProduct.id === product.id);
         if (!isAlreadyInCart) {
             const newCart = [...cartProducts, product];
             setCartProducts(newCart);
         } else {
-            //si ya existe el producto en el carrito, eliminarlo
             removeFromCart(product);
         }
-    }
+    };
 
     const removeFromCart = (product) => {
         const newCart = cartProducts.filter((cartProduct) => cartProduct.id !== product.id);
@@ -107,8 +98,12 @@ function GlobalProvider({ children }) {
         <GlobalContext.Provider
             value={{
                 loading,
-                categoriesWithIcons,
-                searchedProducts,
+                categoriesNamesUpperCase,
+                searchedProducts: filteredProducts,
+                selectedCategory,
+                setSelectedCategory,
+                filteredProducts,
+                setFilteredProducts,
                 searchValue,
                 setSearchValue,
                 orderBy,
