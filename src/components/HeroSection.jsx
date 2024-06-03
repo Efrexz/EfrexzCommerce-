@@ -3,6 +3,7 @@ import { Card } from './Card'
 import { CategoryList } from './CategoryList'
 import { SortMenu } from './SortMenu'
 import { GlobalContext } from '../context/GlobalContext'
+import { CheckoutSideMenu } from './CheckOutSideMenu'
 
 function HeroSection() {
 
@@ -13,6 +14,7 @@ function HeroSection() {
 
     return (
         <main className="flex h-screen w-full pt-[75px]">
+            <CheckoutSideMenu />
             <section className="bg-gray-100 pl-6 w-[18%] h-full pt-9">
                 <CategoryList />
             </section>

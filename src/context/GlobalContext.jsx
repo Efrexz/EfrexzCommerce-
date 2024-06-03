@@ -113,6 +113,19 @@ function GlobalProvider({ children }) {
         setCartProducts(newCart);
     };
 
+    ////////////// Menu Carrito de compras ////////////////
+    const [isCheckoutMenuOpen, setIsCheckoutMenuOpen] = useState(false);
+    const [totalPrice, setTotalPrice] = useState(0);
+
+    useEffect(() => {
+        let totalPrice = 0;
+        cartProducts.forEach((product) => {
+            totalPrice += product.price;
+        });
+        setTotalPrice(totalPrice.toFixed(2));
+    }, [cartProducts]);
+
+
     return (
         <GlobalContext.Provider
             value={{
@@ -126,7 +139,11 @@ function GlobalProvider({ children }) {
                 orderBy,
                 setOrderBy,
                 cartProducts,
+                setCartProducts,
                 addToCart,
+                isCheckoutMenuOpen,
+                setIsCheckoutMenuOpen,
+                totalPrice,
             }}
         >
             {children}

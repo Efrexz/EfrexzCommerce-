@@ -8,7 +8,7 @@ import { GlobalContext } from '../context/GlobalContext';
 import { useContext } from 'react';
 
 function Header() {
-    const { cartProducts } = useContext(GlobalContext);
+    const { cartProducts, isCheckoutMenuOpen, setIsCheckoutMenuOpen } = useContext(GlobalContext);
 
     return (
         <header className="bg-gray-100 p-4 border-b border-gray-400 absolute w-full">
@@ -30,7 +30,7 @@ function Header() {
                             <a href="#"><ShopStore className='w-7 h-7' /></a>
                         </li>
                         <li className='relative'>
-                            <a href="#">
+                            <a href="#" onClick={() => setIsCheckoutMenuOpen(!isCheckoutMenuOpen)}>
                                 <CartShop className='w-7 h-7' />
                             </a>
                             <span className='absolute top-0 right-0 bg-blue-600 text-white rounded-full p-1 text-xs transform translate-x-1/2 -translate-y-1/2'>
