@@ -6,8 +6,8 @@ import { GlobalContext } from '../context/GlobalContext'
 
 function HeroSection() {
 
-    //traemos del contexto los productos que se han filtrado por busqueda
-    const { searchedProducts, filteredProducts } = useContext(GlobalContext);
+    //contexto de los productos filtrados por busqueda y categoria
+    const { filteredProducts } = useContext(GlobalContext);
 
 
 
