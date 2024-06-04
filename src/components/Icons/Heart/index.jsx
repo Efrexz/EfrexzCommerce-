@@ -5,11 +5,14 @@ import './Heart.css';
 
 function Heart({ productInfo }) {
     //aplicamos aqui el onclick del heart para agregar el producto al carrito porque si lo agregamos en el componente card falla la animacion del heart si hace click en el contenedor del heart
-    const { addToCart } = useContext(GlobalContext);
+    const { addToCart, cartProducts } = useContext(GlobalContext);
+
+    //verificamos si el producto esta en el carrito y poder solucionar el problema de la animacion del heart al momento de eliminar productos del carrito se actualice y se desactiva la animacion en la lista de productos
+    const isFavorite = cartProducts.some((cartProduct) => cartProduct.id === productInfo.id);
 
     return (
         <div className="heart-container" title="Favorite" onClick={() => addToCart(productInfo)}>
-            <input type="checkbox" className="checkbox" id="Give-It-An-Id" />
+            <input type="checkbox" className="checkbox" id="Give-It-An-Id" checked={isFavorite} />
             <div className="svg-container">
                 <svg viewBox="0 0 24 24" className="svg-outline" xmlns="http://www.w3.org/2000/svg">
                     <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z">
