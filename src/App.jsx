@@ -1,6 +1,4 @@
-import { Header } from './components/Header'
-import { HeroSection } from './components/HeroSection'
-import { Footer } from './components/Footer'
+import { Home } from './Pages/Home'
 import { GlobalProvider } from './context/GlobalContext'
 
 function App() {
@@ -10,9 +8,7 @@ function App() {
     <>
       <main className='relative'>
         <GlobalProvider>
-          <Header />
-          <HeroSection />
-          <Footer />
+          <Home />
         </GlobalProvider>
       </main>
     </>

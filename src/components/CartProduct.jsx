@@ -21,4 +21,5 @@ function CartProduct(props) {
     )
 }
 
+
 export { CartProduct };
