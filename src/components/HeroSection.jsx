@@ -13,7 +13,7 @@ function HeroSection() {
 
 
     return (
-        <main className="flex h-screen w-full pt-[75px]">
+        <main className="flex h-screen w-full ">
             <CheckoutSideMenu />
             <section className="bg-gray-100 pl-6 w-[18%] h-full pt-9">
                 <CategoryList />

@@ -21,7 +21,7 @@ function CheckoutSideMenu() {
 
 
     return (
-        <aside className={`${isCheckoutMenuOpen ? "flex" : "hidden"} flex-col  fixed right-0  top-[72px] border z-10 bg-white p-4 border-black rounded-lg w-[360px] h-[calc(100vh-72px)] `}>
+        <aside className={`${isCheckoutMenuOpen ? "flex" : "hidden"} flex-col  fixed right-0  top-[72px] border bg-white p-4 border-black rounded-lg w-[360px] h-[calc(100vh-72px)] z-50`}>
             <div className="flex justify-between">
                 <h2 className="font-medium text-xl">My Order</h2>
                 <ExitCartArrow
