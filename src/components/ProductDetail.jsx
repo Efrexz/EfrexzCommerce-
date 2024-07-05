@@ -2,10 +2,10 @@ import { useContext } from 'react';
 import { GlobalContext } from '../context/GlobalContext';
 import Xicon from '../assets/xIcon.svg?react';
 
-function ProductDetail(props) {
+function ProductDetail() {
+    const { isProductDetailOpen, setIsProductDetailOpen, productInfo, addToCart, cartProducts } = useContext(GlobalContext);
 
-    const { id, price, imageUrl, title, removeItemCart } = props;
-    const { isProductDetailOpen, setIsProductDetailOpen, productInfo } = useContext(GlobalContext);
+    const isAlreadyInCart = cartProducts.some((cartProduct) => cartProduct?.id === productInfo?.id);
 
     return (
         <aside className={`${isProductDetailOpen ? "flex" : "hidden"} flex-col  fixed right-0  top-[72px] border bg-white  border-black rounded-lg w-[360px] h-[calc(100vh-72px)] z-50`}>
@@ -32,11 +32,21 @@ function ProductDetail(props) {
                 <div>
                     <p className="mt-9 font-medium text-xl">${productInfo?.price}</p>
                     <form className="mt-4">
-                        <button
-                            className="block w-full rounded bg-yellow-400 p-4 text-sm font-medium transition hover:scale-105"
-                        >
-                            Add to Cart
-                        </button>
+                        {
+                            isAlreadyInCart ?
+                                <button
+                                    className="block w-full rounded bg-yellow-200 p-4 text-sm font-medium transition hover:scale-105"
+                                    onClick={() => addToCart(productInfo)}
+                                >
+                                    Remove from Cart
+                                </button> :
+                                <button
+                                    className="block w-full rounded bg-yellow-400 p-4 text-sm font-medium transition hover:scale-105"
+                                    onClick={() => addToCart(productInfo)}
+                                >
+                                    Add to Cart
+                                </button>
+                        }
                     </form>
                 </div>
             </div>

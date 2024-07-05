@@ -8,7 +8,7 @@ import CartShop from '../assets/cartShop.svg?react';
 import { GlobalContext } from '../context/GlobalContext';
 
 function Header() {
-    const { cartProducts, isCheckoutMenuOpen, setIsCheckoutMenuOpen } = useContext(GlobalContext);
+    const { cartProducts, isCheckoutMenuOpen, setIsCheckoutMenuOpen, setIsProductDetailOpen } = useContext(GlobalContext);
 
     return (
         <header className="bg-gray-100 p-4 border-b border-gray-400 w-full z-50">
@@ -33,7 +33,11 @@ function Header() {
                             </Link>
                         </li>
                         <li className='relative'>
-                            <span onClick={() => { setIsCheckoutMenuOpen(!isCheckoutMenuOpen); }} aria-label="View cart" className='cursor-pointer'>
+                            <span onClick={() => {
+                                setIsCheckoutMenuOpen(!isCheckoutMenuOpen);
+                                setIsProductDetailOpen(false);
+                            }}
+                                aria-label="View cart" className='cursor-pointer'>
                                 <CartShop className='w-7 h-7' />
                             </span>
                             <span className='absolute top-0 right-0 bg-blue-600 text-white rounded-full p-1 text-xs transform translate-x-1/2 -translate-y-1/2'>

@@ -5,18 +5,25 @@ import { GlobalContext } from '../context/GlobalContext';
 
 function Card({ productInfo }) {
 
-    const { setProductInfo, setIsProductDetailOpen } = useContext(GlobalContext);
+    const { setProductInfo, setIsProductDetailOpen, setIsCheckoutMenuOpen } = useContext(GlobalContext);
+
+    const handleCardClick = () => {
+        setProductInfo(productInfo);
+        setIsCheckoutMenuOpen(false);
+        setIsProductDetailOpen(true);
+    };
+
+    const handleHeartClick = (event) => {
+        event.stopPropagation(); // Prevenir que el evento de clic se propague al contenedor padre y se abra el detalle del producto
+    };
 
     return (
         <div
             className="w-58 h-[262px] bg-white cursor-pointer p-3 border max-w-52 rounded-lg shadow-md flex flex-col justify-between"
-            onClick={() => {
-                setProductInfo(productInfo);
-                setIsProductDetailOpen(true);
-                console.log(productInfo);
-            }}>
+            onClick={handleCardClick}>
             <figure className="relative w-full h-44 bg-cover bg-center bg-gray-100">
                 <span
+                    onClick={handleHeartClick}
                     className="absolute top-0 right-0 bg-white/60 rounded-full px-1 py-0.5 m-2 text-sm"
                 ><Heart productInfo={productInfo} /></span>
                 <img
