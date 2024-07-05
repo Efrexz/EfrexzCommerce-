@@ -1,7 +1,12 @@
 import { CheckoutSideMenu } from "../components/CheckOutSideMenu"
-
+import OrderIcon from '../assets/orderIcon.svg?react';
+import { GlobalContext } from "../context/GlobalContext";
+import { useContext } from "react";
 
 function MyOrders() {
+
+    const { savedOrders } = useContext(GlobalContext);
+
     return (
         <>
             <CheckoutSideMenu />
@@ -15,39 +20,38 @@ function MyOrders() {
                         <div className="mt-8">
                             <ul className="space-y-4">
                                 <li className="flex items-center gap-4">
-                                    <img
-                                        src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=830&q=80"
-                                        alt=""
-                                        className="size-16 rounded object-cover"
-                                    />
+                                    <OrderIcon className='w-14 h-14' />
 
                                     <div>
-                                        <h3 className="text-sm text-gray-900">Basic Tee 6-Pack</h3>
+                                        <h3 className="text-sm text-gray-900 font-bold">ORDER #123456</h3>
 
-                                        <dl className="mt-0.5 space-y-px text-[10px] text-gray-600">
+                                        <dl className="mt-0.5 space-y-px text-[14px] text-gray-600">
                                             <div>
-                                                <dt className="inline">Size:</dt>
-                                                <dd className="inline">XXS</dd>
+                                                <dt className="inline font-medium">Items:</dt>
+                                                <dd className="inline"> 5</dd>
                                             </div>
 
                                             <div>
-                                                <dt className="inline">Color:</dt>
-                                                <dd className="inline">White</dd>
+                                                <dt className="inline font-medium">Date:</dt>
+                                                <dd className="inline"> 2022-05-01</dd>
                                             </div>
                                         </dl>
                                     </div>
 
-                                    <div className="flex flex-1 items-center justify-end">
+                                    <div className="flex flex-1 items-center justify-end gap-2">
+
+                                        <span className="font-medium text-gray-900 text-lg">
+                                            $400
+                                        </span>
                                         <button className="text-gray-600 transition hover:text-red-600">
                                             <span className="sr-only">Remove item</span>
-
                                             <svg
                                                 xmlns="http://www.w3.org/2000/svg"
                                                 fill="none"
                                                 viewBox="0 0 24 24"
                                                 strokeWidth="1.5"
                                                 stroke="currentColor"
-                                                className="h-4 w-4"
+                                                className="h-5 w-5"
                                             >
                                                 <path
                                                     strokeLinecap="round"
@@ -69,41 +73,16 @@ function MyOrders() {
                                         </div>
 
                                         <div className="flex justify-between">
-                                            <dt>VAT</dt>
+                                            <dt>IVA</dt>
                                             <dd>£25</dd>
                                         </div>
 
-                                        <div className="flex justify-between">
-                                            <dt>Discount</dt>
-                                            <dd>-£20</dd>
-                                        </div>
 
                                         <div className="flex justify-between !text-base font-medium">
                                             <dt>Total</dt>
                                             <dd>£200</dd>
                                         </div>
                                     </dl>
-
-                                    <div className="flex justify-end">
-                                        <span className="inline-flex items-center justify-center rounded-full bg-indigo-100 px-2.5 py-0.5 text-indigo-700">
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                fill="none"
-                                                viewBox="0 0 24 24"
-                                                strokeWidth="1.5"
-                                                stroke="currentColor"
-                                                className="-ms-1 me-1.5 h-4 w-4"
-                                            >
-                                                <path
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round"
-                                                    d="M16.5 6v.75m0 3v.75m0 3v.75m0 3V18m-9-5.25h5.25M7.5 15h3M3.375 5.25c-.621 0-1.125.504-1.125 1.125v3.026a2.999 2.999 0 010 5.198v3.026c0 .621.504 1.125 1.125 1.125h17.25c.621 0 1.125-.504 1.125-1.125v-3.026a2.999 2.999 0 010-5.198V6.375c0-.621-.504-1.125-1.125-1.125H3.375z"
-                                                />
-                                            </svg>
-
-                                            <p className="whitespace-nowrap text-xs">2 Discounts Applied</p>
-                                        </span>
-                                    </div>
 
                                     <div className="flex justify-end">
                                         <a

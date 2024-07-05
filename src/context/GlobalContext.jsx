@@ -125,6 +125,12 @@ function GlobalProvider({ children }) {
         setTotalPrice(totalPrice.toFixed(2));
     }, [cartProducts]);
 
+    ////////////// Tarjeta del detalle del producto ////////////////
+    const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
+    const [productInfo, setProductInfo] = useState(null);
+
+    ////////////// Ordenes Guardadas ////////////////
+    const [savedOrders, setSavedOrders] = useState([]);
 
     return (
         <GlobalContext.Provider
@@ -144,6 +150,12 @@ function GlobalProvider({ children }) {
                 isCheckoutMenuOpen,
                 setIsCheckoutMenuOpen,
                 totalPrice,
+                isProductDetailOpen,
+                setIsProductDetailOpen,
+                productInfo,
+                setProductInfo,
+                savedOrders,
+                setSavedOrders,
             }}
         >
             {children}

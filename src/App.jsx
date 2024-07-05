@@ -6,6 +6,7 @@ import { MyOrder } from './Pages/MyOrder'
 import { SignIn } from './Pages/SignIn'
 import { NotFound } from './Pages/NotFound'
 import { Header } from './components/Header'
+import { Footer } from './components/Footer'
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
               <Route path='/*' element={<NotFound />} />
             </Routes>
           </main>
+          <Footer />
         </HashRouter>
       </GlobalProvider>
     </>

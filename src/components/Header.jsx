@@ -33,7 +33,7 @@ function Header() {
                             </Link>
                         </li>
                         <li className='relative'>
-                            <span onClick={() => { setIsCheckoutMenuOpen(!isCheckoutMenuOpen); }} aria-label="View cart">
+                            <span onClick={() => { setIsCheckoutMenuOpen(!isCheckoutMenuOpen); }} aria-label="View cart" className='cursor-pointer'>
                                 <CartShop className='w-7 h-7' />
                             </span>
                             <span className='absolute top-0 right-0 bg-blue-600 text-white rounded-full p-1 text-xs transform translate-x-1/2 -translate-y-1/2'>
