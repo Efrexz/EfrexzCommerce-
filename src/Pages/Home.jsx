@@ -5,6 +5,7 @@ import { SortMenu } from '../components/SortMenu'
 import { GlobalContext } from '../context/GlobalContext'
 import { CheckoutSideMenu } from '../components/CheckOutSideMenu'
 import { ProductDetail } from '../components/ProductDetail'
+import "../index.css";
 
 function Home() {
     //contexto de los productos filtrados por busqueda y categoria
@@ -23,7 +24,7 @@ function Home() {
                     <div>
                         <SortMenu />
                     </div>
-                    <div className="overflow-y-auto p-4 h-full">
+                    <div className="overflow-y-auto p-4 h-full custom-scrollbar">
                         <div className="flex flex-wrap justify-center gap-4">
                             {
                                 filteredProducts.map((product) => (

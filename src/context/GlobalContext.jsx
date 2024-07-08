@@ -115,15 +115,6 @@ function GlobalProvider({ children }) {
 
     ////////////// Menu Carrito de compras ////////////////
     const [isCheckoutMenuOpen, setIsCheckoutMenuOpen] = useState(false);
-    const [totalPrice, setTotalPrice] = useState(0);
-
-    useEffect(() => {
-        let totalPrice = 0;
-        cartProducts.forEach((product) => {
-            totalPrice += product.price;
-        });
-        setTotalPrice(totalPrice.toFixed(2));
-    }, [cartProducts]);
 
     ////////////// Tarjeta del detalle del producto ////////////////
     const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
@@ -149,7 +140,6 @@ function GlobalProvider({ children }) {
                 addToCart,
                 isCheckoutMenuOpen,
                 setIsCheckoutMenuOpen,
-                totalPrice,
                 isProductDetailOpen,
                 setIsProductDetailOpen,
                 productInfo,

@@ -1,14 +1,31 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import ExitCartArrow from '../assets/exitCartArrow.svg?react';
 import { CartProduct } from "./CartProduct";
 import { GlobalContext } from "../context/GlobalContext";
+import "../index.css";
 
 function CheckoutSideMenu() {
 
 
-    const { isCheckoutMenuOpen, setIsCheckoutMenuOpen, cartProducts, setCartProducts, totalPrice } = useContext(GlobalContext);
-    console.log(cartProducts);
+    const {
+        isCheckoutMenuOpen,
+        setIsCheckoutMenuOpen,
+        cartProducts,
+        setCartProducts,
+        savedOrders,
+        setSavedOrders
+    } = useContext(GlobalContext);
 
+
+    const [totalPrice, setTotalPrice] = useState(0);
+
+    useEffect(() => {
+        let newPrice = 0;
+        cartProducts.forEach((product) => {
+            newPrice += product.price;
+        });
+        setTotalPrice(newPrice.toFixed(2));
+    }, [cartProducts]);
 
 
     function removeItemCart(id) {
@@ -16,7 +33,6 @@ function CheckoutSideMenu() {
         const newCartList = [...cartProducts];//guardamos todos los productos en esta variable
         newCartList.splice(productIndex, 1);//modificamos esta lista segun el id del producto al eliminarlo
         setCartProducts(newCartList);//modificamos el estado agregando el nuevo array modificado de items en el carrito
-        console.log(cartProducts)
     }
 
 
@@ -28,7 +44,7 @@ function CheckoutSideMenu() {
                     className="h-9 w-9 cursor-pointer"
                     onClick={() => setIsCheckoutMenuOpen(false)} />
             </div>
-            <div className="px-2 overflow-y-auto flex-1 mt-6 mb-4">
+            <div className="px-2 overflow-y-auto flex-1 mt-6 mb-4 custom-scrollbar">
                 {
                     cartProducts.map((product) => (//por cada producto en nuestro cartproducts generamos una nueva card
                         <CartProduct
@@ -46,6 +62,18 @@ function CheckoutSideMenu() {
                 <span className="text-2xl font-medium">Total:</span>
                 <span className="font-medium text-2xl">${totalPrice}</span>
             </p>
+            <button
+                onClick={() => {
+                    setSavedOrders([...savedOrders, { cartProducts, id: Date.now() }]);
+                    setCartProducts([]);
+                    setIsCheckoutMenuOpen(false);
+                    console.log(savedOrders);
+
+                }}
+                className={`block w-full rounded bg-yellow-400 p-4 text-sm font-medium transition hover:scale-105`}
+            >
+                CheckOut
+            </button>
         </aside>
     )
 }

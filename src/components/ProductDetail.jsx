@@ -30,24 +30,14 @@ function ProductDetail() {
                     <p className='mt-4 text-md text-gray-700'>{productInfo?.description}</p>
                 </div>
                 <div>
-                    <p className="mt-9 font-medium text-xl">${productInfo?.price}</p>
-                    <form className="mt-4">
-                        {
-                            isAlreadyInCart ?
-                                <button
-                                    className="block w-full rounded bg-yellow-200 p-4 text-sm font-medium transition hover:scale-105"
-                                    onClick={() => addToCart(productInfo)}
-                                >
-                                    Remove from Cart
-                                </button> :
-                                <button
-                                    className="block w-full rounded bg-yellow-400 p-4 text-sm font-medium transition hover:scale-105"
-                                    onClick={() => addToCart(productInfo)}
-                                >
-                                    Add to Cart
-                                </button>
-                        }
-                    </form>
+                    <p className="mt-9 font-medium text-xl mb-3">${productInfo?.price}</p>
+                    <button
+                        className={`block w-full rounded ${isAlreadyInCart ? "bg-yellow-200" : "bg-yellow-400"} p-4 text-sm font-medium transition hover:scale-105`}
+                        onClick={() => addToCart(productInfo)}
+                    >
+                        {isAlreadyInCart ? "Remove from Cart" : "Add to Cart"}
+                    </button>
+
                 </div>
             </div>
         </aside>
