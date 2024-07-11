@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import "../index.css";
 
 function MyOrders() {
-    const { savedOrders } = useContext(GlobalContext);
+    const { savedOrders, setSavedOrders } = useContext(GlobalContext);
 
     const navigate = useNavigate();
 
@@ -17,6 +17,13 @@ function MyOrders() {
         const orderTotal = order.cartProducts.reduce((acc, curr) => acc + curr.price, 0);
         return total + orderTotal;
     }, 0);
+
+    function removeOrder(id) {
+        const orderIndex = savedOrders.findIndex((order) => order.id === id);
+        const newOrderList = [...savedOrders];
+        newOrderList.splice(orderIndex, 1);
+        setSavedOrders(newOrderList);
+    }
 
     return (
         <>
@@ -76,7 +83,10 @@ function MyOrders() {
                                                         <span className="font-medium text-gray-900 text-lg">
                                                             ${priceByOrder.toFixed(2)}
                                                         </span>
-                                                        <button className="text-gray-600 transition hover:text-red-600">
+                                                        <button
+                                                            onClick={() => removeOrder(order.id)}
+                                                            className="text-gray-600 transition hover:text-red-600"
+                                                        >
                                                             <span className="sr-only">Remove item</span>
                                                             <svg
                                                                 xmlns="http://www.w3.org/2000/svg"
