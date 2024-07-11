@@ -1,4 +1,5 @@
 import Xicon from '../assets/xIcon.svg?react';
+import PropTypes from 'prop-types';
 
 function CartProduct(props) {
 
@@ -19,6 +20,14 @@ function CartProduct(props) {
             </div>
         </div>
     )
+}
+
+CartProduct.propTypes = {
+    id: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    imageUrl: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    removeItemCart: PropTypes.func.isRequired
 }
 
 
