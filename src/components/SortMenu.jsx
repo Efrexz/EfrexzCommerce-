@@ -1,8 +1,7 @@
 import { useContext, useState } from 'react';
 // import ArrowDown from '../assets/arrowDown.svg?react';
 import { ArrowToggle } from './Icons/ArrowToggle';
-import NextPageArrow from '../assets/nextPageArrow.svg?react';
-import PreviousPageArrow from '../assets/previousPageArrow.svg?react';
+
 import { GlobalContext } from '../context/GlobalContext';
 
 const SortMenu = () => {
