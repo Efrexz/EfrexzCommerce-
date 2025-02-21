@@ -6,4 +6,12 @@ import svgr from "vite-plugin-svgr";
 export default defineConfig({
   plugins: [react(), svgr()],
   base: "https://Efrexz.github.io/EfrexzCommerce-",
+  resolve: {
+    alias: {
+      "@assets": "/src/assets",
+      "@components": "/src/components",
+      "@pages": "/src/pages",
+      "@context": "/src/context",
+    },
+  },
 });

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { GlobalContext } from "../context/GlobalContext";
+import { GlobalContext } from "@context/GlobalContext";
 
 function CategoryList() {
 
@@ -16,8 +16,8 @@ function CategoryList() {
     }
 
     return (
-        <fieldset>
-            <legend className="text-lg font-bold text-gray-900">Categorías</legend>
+        <fieldset className="mt-2 lg:mt-0 w-[210px]">
+            <legend className="text-lg font-bold text-gray-900">Categories</legend>
 
             <div className="mt-4 space-y-3.5">
                 {categoriesNamesUpperCase.map((category) => {

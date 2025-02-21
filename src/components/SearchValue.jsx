@@ -7,7 +7,7 @@ function SearchValue() {
     const { searchValue, setSearchValue } = useContext(GlobalContext)
 
     return (
-        <form className="relative w-72 bg-white pr-4 rounded-md">
+        <form className="relative w-72 bg-white  rounded-md min-w-52">
             <label className="flex items-center w-full h-10">
                 <input
                     required

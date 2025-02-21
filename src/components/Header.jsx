@@ -2,10 +2,10 @@ import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { Logo } from './Logo'
 import { SearchValue } from './SearchValue'
-import HomeIcon from '../assets/homeIcon.svg?react';
-import OrdersList from '../assets/ordersList.svg?react';
-import CartShop from '../assets/cartShop.svg?react';
-import { GlobalContext } from '../context/GlobalContext';
+import HomeIcon from '@assets/homeIcon.svg?react';
+import OrdersList from '@assets/ordersList.svg?react';
+import CartShop from '@assets/cartShop.svg?react';
+import { GlobalContext } from '@context/GlobalContext';
 
 function Header() {
     const { cartProducts, isCheckoutMenuOpen, setIsCheckoutMenuOpen, setIsProductDetailOpen, savedOrders } = useContext(GlobalContext);
@@ -47,8 +47,8 @@ function Header() {
                                 {cartProducts.length}
                             </span>
                         </li>
-                        <span className='font-bold mx-3'>|</span>
-                        <figure>
+                        <span className='font-bold mx-3 hidden md:block'>|</span>
+                        <figure className='hidden md:block'>
                             <img src="https://images.unsplash.com/photo-1543610892-0b1f7e6d8ac1?q=80&w=1856&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="profile" className='w-10 h-10 rounded-full' aria-label="User profile" />
                         </figure>
                     </ul>
