@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
-import ExitCartArrow from '../assets/exitCartArrow.svg?react';
 import { CartProduct } from "./CartProduct";
-import { GlobalContext } from "../context/GlobalContext";
+import { GlobalContext } from "@context/GlobalContext";
+import ExitCartArrow from '@assets/exitCartArrow.svg?react';
 import "../index.css";
 
 function CheckoutSideMenu() {

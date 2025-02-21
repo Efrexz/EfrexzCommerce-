@@ -1,8 +1,8 @@
 import { useContext, useState } from 'react';
 import { ArrowToggle } from './Icons/ArrowToggle';
-import { GlobalContext } from '../context/GlobalContext';
-import BurguerMenuIcon from '../assets/burguerMenu.svg?react';
-import XIcon from '../assets/xIcon.svg?react'
+import { GlobalContext } from '@context/GlobalContext';
+import BurguerMenuIcon from '@assets/burguerMenu.svg?react';
+import XIcon from '@assets/xIcon.svg?react'
 
 const SortMenu = () => {
     const { orderBy, setOrderBy } = useContext(GlobalContext);

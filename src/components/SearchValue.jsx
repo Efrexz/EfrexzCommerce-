@@ -7,7 +7,7 @@ function SearchValue() {
     const { searchValue, setSearchValue } = useContext(GlobalContext)
 
     return (
-        <form className="relative w-72 bg-white  rounded-md min-w-52">
+        <form className="relative w-72 bg-white  rounded-md min-w-52 hidden md:block">
             <label className="flex items-center w-full h-10">
                 <input
                     required
@@ -16,7 +16,7 @@ function SearchValue() {
                     id="search"
                     type="text"
                     value={searchValue}
-                    className="w-full pl-14 outline-none bg-transparent border-0"
+                    className="w-full pl-14 outline-none bg-transparent border-0 "
                     onChange={(event) => {
                         setSearchValue(event.target.value);
                     }}

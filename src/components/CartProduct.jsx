@@ -1,4 +1,4 @@
-import Xicon from '../assets/xIcon.svg?react';
+import Xicon from '@assets/xIcon.svg?react';
 import PropTypes from 'prop-types';
 
 function CartProduct(props) {

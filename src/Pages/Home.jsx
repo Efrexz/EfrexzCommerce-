@@ -22,7 +22,7 @@ function Home() {
 
             {/* Botón para mostrar/ocultar sidebar en pantallas pequeñas */}
             <button
-                className="lg:hidden absolute top-2 left-4 z-50 bg-gray-100 p-2 rounded-lg shadow-md"
+                className="lg:hidden absolute top-20 left-4 z-50 bg-gray-100 p-2 rounded-lg shadow-md"
                 onClick={() => setIsSidebarOpen(!isSidebarOpen)}
             >
                 {isSidebarOpen ? <XIcon className="w-6 h-6" /> : <MenuIcon className="w-6 h-6" />}
@@ -30,14 +30,14 @@ function Home() {
 
             {/* Sidebar con categorías */}
             <section
-                className={`bg-gray-100 pl-6 w-[210px] h-full pt-12 lg:pt-6 fixed lg:relative z-40 transition-transform duration-300 lg:translate-x-0 
+                className={`bg-gray-100  w-[210px] h-full mt-16 pt-16 pl-6 lg:pt-6 fixed lg:relative z-40 transition-transform duration-300 lg:translate-x-0
                 ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}`}
             >
                 <CategoryList />
             </section>
 
             {/* Contenido principal */}
-            <section className={`bg-white p-4 w-full h-auto flex flex-col lg:ml-0 ${isSidebarOpen ? "ml-52" : "ml-12"} transition-all duration-300`}>
+            <section className={`bg-white p-4 w-full h-auto flex flex-col mt-16 lg:ml-0 ${isSidebarOpen ? "ml-52" : "ml-12"} transition-all duration-300`}>
                 <div>
                     <SortMenu />
                 </div>

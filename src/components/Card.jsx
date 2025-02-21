@@ -1,7 +1,7 @@
 import { useContext } from 'react';
-import PropTypes from 'prop-types';
+import { GlobalContext } from '@context/GlobalContext';
 import { Heart } from './Icons/Heart';
-import { GlobalContext } from '../context/GlobalContext';
+import PropTypes from 'prop-types';
 
 function Card({ productInfo }) {
 
