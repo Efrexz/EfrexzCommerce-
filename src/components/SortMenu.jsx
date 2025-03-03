@@ -1,10 +1,10 @@
 import { useContext, useState } from 'react';
 import { ArrowToggle } from './Icons/ArrowToggle';
 import { GlobalContext } from '@context/GlobalContext';
-import BurguerMenuIcon from '@assets/burguerMenu.svg?react';
+import MenuDepIcon from '@assets/icons/menuDep.svg?react'
 import XIcon from '@assets/xIcon.svg?react'
 
-const SortMenu = () => {
+function SortMenu() {
     const { orderBy, setOrderBy } = useContext(GlobalContext);
 
     //creamos un estado para saber cuando se abre o se cierra el menú de orden y enviarlo como prop al componente ArrowToggle
@@ -64,7 +64,7 @@ const SortMenu = () => {
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                         className="p-2 hover:bg-gray-200 rounded transition-colors"
                     >
-                        {isMobileMenuOpen ? <XIcon className="w-6 h-6" /> : <BurguerMenuIcon className="w-6 h-6" />}
+                        {isMobileMenuOpen ? <XIcon className="w-6 h-6" /> : <MenuDepIcon className="w-7 h-7" />}
                     </button>
                 </div>
 
@@ -90,6 +90,6 @@ const SortMenu = () => {
             </div>
         </div>
     );
-};
+}
 
 export { SortMenu };
