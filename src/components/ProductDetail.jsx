@@ -29,7 +29,7 @@ function ProductDetail() {
                     <h3 className="mt-6 text-xl font-medium text-gray-900">{productInfo?.title}</h3>
                     <p className='mt-4 text-md text-gray-700'>{productInfo?.description}</p>
                 </div>
-                <div>
+                <div className='mb-6 md:mb-0'>
                     <p className="mt-9 font-medium text-xl mb-3">${productInfo?.price}</p>
                     <button
                         className={`block w-full rounded ${isAlreadyInCart ? "bg-yellow-200" : "bg-yellow-400"} p-4 text-sm font-medium transition hover:scale-105`}

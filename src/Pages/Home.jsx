@@ -1,19 +1,18 @@
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import { Card } from '@components/Card'
 import { CategoryList } from '@components/CategoryList'
 import { SortMenu } from '@components/SortMenu'
 import { GlobalContext } from '@context/GlobalContext'
 import { CheckoutSideMenu } from '@components/CheckOutSideMenu'
 import { ProductDetail } from '@components/ProductDetail'
-import XIcon from '@assets/xIcon.svg?react'
+
 import MenuIcon from '@assets/burguerMenu.svg?react'
 import "../index.css";
 
 
 function Home() {
     //contexto de los productos filtrados por busqueda y categoria
-    const { filteredProducts } = useContext(GlobalContext);
-    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    const { filteredProducts, isSidebarOpen, setIsSidebarOpen } = useContext(GlobalContext);
 
     return (
         <main className="flex h-[calc(100vh-72.8px)] w-full relative">
@@ -25,12 +24,12 @@ function Home() {
                 className="lg:hidden absolute top-20 left-4 z-40 bg-gray-100 p-2 rounded-lg shadow-md"
                 onClick={() => setIsSidebarOpen(!isSidebarOpen)}
             >
-                {isSidebarOpen ? <XIcon className="w-6 h-6" /> : <MenuIcon className="w-6 h-6" />}
+                <MenuIcon className="w-6 h-6" />
             </button>
 
             {/* Sidebar con categorías */}
             <section
-                className={`bg-gray-100  w-[210px] h-full mt-16 pt-16 pl-6 lg:pt-6 fixed lg:relative z-40 transition-transform duration-300 lg:translate-x-0
+                className={`bg-gray-100  w-[210px] h-full  pt-16 pl-6 lg:pt-6 fixed lg:relative z-40 transition-transform duration-300 lg:translate-x-0
                 ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}`}
             >
                 <CategoryList />

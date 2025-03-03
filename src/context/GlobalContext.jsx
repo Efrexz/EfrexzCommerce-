@@ -123,6 +123,9 @@ function GlobalProvider({ children }) {
     ////////////// Ordenes Guardadas ////////////////
     const [savedOrders, setSavedOrders] = useState([]);
 
+    ////////////// Sidebar en mobile ////////////////
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
     return (
         <GlobalContext.Provider
             value={{
@@ -146,6 +149,8 @@ function GlobalProvider({ children }) {
                 setProductInfo,
                 savedOrders,
                 setSavedOrders,
+                isSidebarOpen,
+                setIsSidebarOpen,
             }}
         >
             {children}
