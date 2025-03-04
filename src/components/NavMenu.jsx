@@ -94,7 +94,7 @@ function NavMenu({ setIsMobileMenuOpen }) {
                         </li>
                     </ul>
                     {/* user profile */}
-                    <div className="flex gap-2 border-t border-gray-400 pt-4">
+                    <div className="flex gap-2 border-t border-gray-400 pt-4 mb-5 md:mb-0">
                         <figure className='w-10 h-10'>
                             <img src="https://images.unsplash.com/photo-1543610892-0b1f7e6d8ac1?q=80&w=1856&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="profile" className='w-full h-full rounded-full' aria-label="User profile" />
                         </figure>

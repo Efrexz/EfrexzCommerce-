@@ -19,9 +19,9 @@ function Header() {
 
 
     return (
-        <header className="bg-gray-100 p-4 border-b border-gray-400 fixed top-0 left-0 right-2 z-50">
-            <nav className='flex justify-between items-center px-6 w-full'>
-                <div className='flex items-center gap-6 w-full'>
+        <header className="bg-gray-100 p-4 border-b border-gray-400 fixed top-0 left-0 right-2 z-50 w-full">
+            <nav className='flex justify-between items-center px-4 w-full'>
+                <div className='flex items-center gap-4 w-full'>
                     <Link to="/" aria-label="Go to home">
                         <Logo className='w-7 h-7' />
                     </Link>

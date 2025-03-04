@@ -17,7 +17,7 @@ function CategoryList() {
     }
 
     return (
-        <aside>
+        <aside className="h-full">
             {/* Botón para mostrar/ocultar sidebar en pantallas pequeñas */}
             <button
                 className="lg:hidden absolute top-20 left-4 z-40 bg-gray-100 p-2 rounded-lg shadow-md"

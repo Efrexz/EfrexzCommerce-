@@ -70,7 +70,7 @@ function CheckoutSideMenu() {
                     console.log(savedOrders);
 
                 }}
-                className={`block w-full rounded bg-yellow-400 p-4 text-sm font-medium transition hover:scale-105`}
+                className={`block w-full rounded bg-yellow-400 p-4 text-sm font-medium transition hover:scale-105 mb-8 md:mb-0`}
             >
                 CheckOut
             </button>

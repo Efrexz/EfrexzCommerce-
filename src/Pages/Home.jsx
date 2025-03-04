@@ -5,7 +5,6 @@ import { SortMenu } from '@components/SortMenu'
 import { GlobalContext } from '@context/GlobalContext'
 import { CheckoutSideMenu } from '@components/CheckOutSideMenu'
 import { ProductDetail } from '@components/ProductDetail'
-
 import MenuIcon from '@assets/burguerMenu.svg?react'
 import "../index.css";
 
@@ -15,7 +14,7 @@ function Home() {
     const { filteredProducts, isSidebarOpen, setIsSidebarOpen } = useContext(GlobalContext);
 
     return (
-        <main className="flex h-[calc(100vh-72.8px)] w-full relative">
+        <main className="flex h-[calc(100vh-72.8px)] w-full relative overflow-y-hidden">
             <CheckoutSideMenu />
             <ProductDetail />
 
@@ -29,7 +28,7 @@ function Home() {
 
             {/* Sidebar con categorías */}
             <section
-                className={`bg-gray-100  w-[210px] h-full  pt-16 pl-6 lg:pt-6 fixed lg:relative z-40 transition-transform duration-300 lg:translate-x-0
+                className={`bg-gray-100  w-[210px] h-[770px]  pt-16 pl-6 lg:pt-6 fixed lg:relative z-40 transition-transform duration-300 lg:translate-x-0
                 ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}`}
             >
                 <CategoryList />
