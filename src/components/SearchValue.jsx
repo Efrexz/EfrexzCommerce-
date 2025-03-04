@@ -6,7 +6,7 @@ function SearchValue() {
     const { searchValue, setSearchValue } = useContext(GlobalContext)
 
     return (
-        <form className="relative w-72 bg-white rounded-md min-w-52">
+        <form className="relative w-72 lg:w-[400px] bg-white rounded-md min-w-52">
             <div className="flex items-center w-full h-10">
                 <label htmlFor="search" className="sr-only">Search</label>
                 <div className="absolute left-6 flex items-center justify-center">

@@ -14,13 +14,13 @@ function Home() {
     const { filteredProducts, isSidebarOpen, setIsSidebarOpen } = useContext(GlobalContext);
 
     return (
-        <main className="flex h-[calc(100vh-72.8px)] w-full relative overflow-y-hidden">
+        <main className="flex h-[calc(100vh-22.8px)] w-full relative overflow-y-hidden">
             <CheckoutSideMenu />
             <ProductDetail />
 
             {/* Botón para mostrar/ocultar sidebar en pantallas pequeñas */}
             <button
-                className="lg:hidden absolute top-20 left-4 z-40 bg-gray-100 p-2 rounded-lg shadow-md"
+                className="md:hidden absolute top-20 left-4 z-40 bg-gray-100 p-2 rounded-lg shadow-md"
                 onClick={() => setIsSidebarOpen(!isSidebarOpen)}
             >
                 <MenuIcon className="w-6 h-6" />
@@ -28,14 +28,14 @@ function Home() {
 
             {/* Sidebar con categorías */}
             <section
-                className={`bg-gray-100  w-[210px] h-[770px]  pt-16 pl-6 lg:pt-6 fixed lg:relative z-40 transition-transform duration-300 lg:translate-x-0
+                className={`bg-gray-100 w-full md:w-[340px] h-screen  mt-16 pl-6 md:pt-6 fixed md:relative z-40 transition-transform duration-300 md:translate-x-0
                 ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}`}
             >
                 <CategoryList />
             </section>
 
             {/* Contenido principal */}
-            <section className={`bg-white p-4 w-full h-auto flex flex-col mt-16 lg:ml-0 ${isSidebarOpen ? "ml-52" : "ml-12"} transition-all duration-300`}>
+            <section className={`bg-white p-4 w-full h-auto flex flex-col mt-16 md:ml-0 ${isSidebarOpen ? "ml-52" : "ml-12"} transition-all duration-300`}>
                 <div>
                     <SortMenu />
                 </div>

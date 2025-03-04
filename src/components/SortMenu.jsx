@@ -36,7 +36,7 @@ function SortMenu() {
     return (
         <div className="bg-gray-100 p-4 w-full">
             {/* Desktop Version */}
-            <div className="hidden md:flex w-full items-center justify-between">
+            <div className="hidden lg:flex w-full items-center justify-between">
                 <div className="flex gap-6 items-center">
                     <h2 className="text-lg font-bold">Order By:</h2>
                     <ul className="flex gap-6">
@@ -57,7 +57,7 @@ function SortMenu() {
             </div>
 
             {/* Mobile Version */}
-            <div className="md:hidden">
+            <div className="lg:hidden">
                 <div className="flex items-center justify-between">
                     <h2 className="text-lg font-bold">Order By:</h2>
                     <button

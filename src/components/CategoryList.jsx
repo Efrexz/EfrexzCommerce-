@@ -17,17 +17,17 @@ function CategoryList() {
     }
 
     return (
-        <aside className="h-full">
+        <aside className="h-full w-full">
             {/* Botón para mostrar/ocultar sidebar en pantallas pequeñas */}
             <button
-                className="lg:hidden absolute top-20 left-4 z-40 bg-gray-100 p-2 rounded-lg shadow-md"
+                className="md:hidden absolute  top-4 left-4 z-40 bg-gray-100 p-2 rounded-lg shadow-md"
                 onClick={() => setIsSidebarOpen(!isSidebarOpen)}
             >
                 <XIcon className="w-6 h-6" />
             </button>
-            <fieldset className="mt-16 lg:mt-0 w-[210px]">
+            <fieldset className="mt-16 md:mt-0 w-full ">
 
-                <legend className="text-lg font-bold text-gray-900">Categories</legend>
+                <legend className="text-2xl md:text-lg font-bold text-gray-900">Categories</legend>
 
                 <div className="mt-4 space-y-3.5">
                     {categoriesNamesUpperCase.map((category) => {
@@ -42,7 +42,7 @@ function CategoryList() {
                                     <div className="dark:bg-black/10">
                                         <label className="text-white">
                                             <input
-                                                className="dark:border-white-400/20 dark:scale-100 transition-all duration-500 ease-in-out dark:hover:scale-110 dark:checked:scale-100 w-4 h-4"
+                                                className="dark:border-white-400/20 dark:scale-100 transition-all duration-500 ease-in-out dark:hover:scale-110 dark:checked:scale-100 w-6 md:w-4 h-6 sm:h-4"
                                                 type="checkbox"
                                                 /*hacemos esto en checked para poder solo seleccionar una categoria a la vez */
                                                 checked={selectedCategory === category.toLowerCase().replace(" ", '-')}
@@ -53,7 +53,7 @@ function CategoryList() {
 
                                 <div>
                                     <strong
-                                        className="font-medium text-gray-900"
+                                        className="font-medium text-gray-900 text-lg md:text-base"
                                     > {category} </strong>
                                 </div>
                             </label>
