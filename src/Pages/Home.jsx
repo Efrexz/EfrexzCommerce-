@@ -11,7 +11,7 @@ import "../index.css";
 
 function Home() {
     //contexto de los productos filtrados por busqueda y categoria
-    const { filteredProducts, isSidebarOpen, setIsSidebarOpen } = useContext(GlobalContext);
+    const { filteredProducts, isSidebarOpen, setIsSidebarOpen, loading } = useContext(GlobalContext);
 
     return (
         <main className="flex h-[calc(100vh-22.8px)] w-full relative overflow-y-hidden">
@@ -41,7 +41,14 @@ function Home() {
                 </div>
                 <div className="overflow-y-auto p-4 h-full custom-scrollbar">
                     <div className="flex flex-wrap justify-center gap-4">
-                        {filteredProducts.length === 0 ? (
+                        {loading ? (
+                            [...Array(20)].map((_, index) => (
+                                <div
+                                    key={index}
+                                    className="w-44 h-52 bg-gray-200 animate-pulse rounded-lg"
+                                ></div>
+                            ))
+                        ) : filteredProducts.length === 0 ? (
                             <div className="text-center w-full mt-16">
                                 <img
                                     src="https://citroen.navigation.com/static/WFS/Shop-CitroenEMEA-Site/-/Shop-CitroenEMEA/en_GB/Product%20Not%20Found.png"
@@ -49,7 +56,9 @@ function Home() {
                                     className="mx-auto w-60 h-40"
                                 />
                                 <p className="text-xl font-semibold text-gray-700">No products found</p>
-                                <p className="mt-2 text-gray-600">Try adjusting your search or filter to find what you're looking for.</p>
+                                <p className="mt-2 text-gray-600">
+                                    Try adjusting your search or filter to find what you're looking for.
+                                </p>
                             </div>
                         ) : (
                             filteredProducts.map((product) => (

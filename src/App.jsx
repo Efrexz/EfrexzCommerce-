@@ -7,6 +7,7 @@ import { SignIn } from './Pages/SignIn'
 import { NotFound } from './Pages/NotFound'
 import { Header } from './components/Header'
 import { Footer } from './components/Footer'
+import "./index.css";
 
 function App() {
 
