@@ -52,7 +52,7 @@ npm run dev
 
 ## Contacto
 
-📩 **Email**: zyzz_448@hotmail.com  
+📩 **Email**: efrexz448@outlook.com  
 💼 **Linkedin**: https://www.linkedin.com/in/efrainandrade-dev/
 
 ¡Gracias por visitar EfrexzCommerce! 🚀
