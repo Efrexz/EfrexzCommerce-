@@ -18,6 +18,10 @@ EfrexzCommerce es una plataforma de comercio electrónico donde los usuarios pue
 - **Tailwind CSS** para un diseño atractivo y responsivo.
 - **Context API** para la gestión del estado global.
 
+## 🚀 Demo en vivo
+
+👉 Prueba la aplicación aquí: [Efrexz Commerce](https://efrexz.github.io/EfrexzCommerce-/)
+
 ## Instalación y ejecución
 
 1. Clona el repositorio:
